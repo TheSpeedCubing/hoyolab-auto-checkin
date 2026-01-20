@@ -2,7 +2,9 @@
 
 PLAYERS_YAML="players.yaml"
 
-players_count=$(/usr/local/bin/yq e '.players | length' "$PLAYERS_YAML")
+YQ=/usr/local/bin/yq
+
+players_count=$($YQ e '.players | length' "$PLAYERS_YAML")
 
 games=("Genshin Impact" "Honkai: Star Rail" "Honkai Impact 3" "Tears of Themis" "Zenless Zone Zero")
 urls=(
@@ -22,8 +24,8 @@ CYAN="\033[36m"
 RESET="\033[0m"
 
 for ((i=0; i<players_count; i++)); do
-  name=$(yq e ".players[$i].name" "$PLAYERS_YAML")
-  token=$(yq e ".players[$i].token" "$PLAYERS_YAML")
+  name=$($YQ e ".players[$i].name" "$PLAYERS_YAML")
+  token=$($YQ e ".players[$i].token" "$PLAYERS_YAML")
 
   echo -e "${CYAN}====== Signing in for ${name} ======${RESET}"
 
@@ -37,7 +39,7 @@ for ((i=0; i<players_count; i++)); do
       *) echo -e "${RED}Unknown game: ${games[$j]}${RESET}" ; continue ;;
     esac
 
-    play_flag=$(yq e ".players[$i].$key" "$PLAYERS_YAML")
+    play_flag=$($YQ e ".players[$i].$key" "$PLAYERS_YAML")
     if [ "$play_flag" = "true" ]; then
       echo -e "${YELLOW}-> Signing in for ${games[$j]}...${RESET}"
       
