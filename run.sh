@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "========== $(date '+%Y-%m-%d %H:%M:%S') =========="
+
 PLAYERS_YAML="players.yaml"
 YQ=/usr/local/bin/yq
 
