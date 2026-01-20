@@ -1,8 +1,9 @@
 #!/bin/bash
 
 PLAYERS_YAML="players.yaml"
-
 YQ=/usr/local/bin/yq
+
+cd "$(dirname "$0")"
 
 players_count=$($YQ e '.players | length' "$PLAYERS_YAML")
 
