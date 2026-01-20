@@ -2,7 +2,7 @@
 
 PLAYERS_YAML="players.yaml"
 
-players_count=$(yq e '.players | length' "$PLAYERS_YAML")
+players_count=$(/usr/local/bin/yq e '.players | length' "$PLAYERS_YAML")
 
 games=("Genshin Impact" "Honkai: Star Rail" "Honkai Impact 3" "Tears of Themis" "Zenless Zone Zero")
 urls=(
