@@ -1,11 +1,8 @@
 #!/bin/bash
-
-echo -e "========== $(date '+%Y-%m-%d %H:%M:%S') ==========\n"
+set -e
 
 PLAYERS_YAML="players.yaml"
 YQ=/usr/local/bin/yq
-
-cd "$(dirname "$0")"
 
 players_count=$($YQ e '.players | length' "$PLAYERS_YAML")
 
